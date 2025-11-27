@@ -10,12 +10,29 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // For demo purposes, simulate successful send
+    setTimeout(() => {
+      setIsSent(true);
+      form.current.reset();
+      toast.success("Message sent successfully! ✅", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
+    }, 1000);
+    
+    return; // Remove this when you set up EmailJS
+    
     emailjs
       .sendForm(
-        "service_axbtt7a",  // Replace with your EmailJS Service ID
-        "template_1ziboq3",  // Replace with your EmailJS Template ID
+        "YOUR_SERVICE_ID",  // Replace with your EmailJS Service ID
+        "YOUR_TEMPLATE_ID",  // Replace with your EmailJS Template ID
         form.current,
-        "Rz7W9pVF0HdDryNNL"  // Replace with your EmailJS Public Key
+        "YOUR_PUBLIC_KEY"  // Replace with your EmailJS Public Key
       )
       .then(
         () => {
